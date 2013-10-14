@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @statement.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @statement.email %>
+</p>
+
+<p>
+  <b>Depo:</b>
+  <%= @statement.depo %>
+</p>
+
+<p>
+  <b>Fb:</b>
+  <%= @statement.fb %>
+</p>
+
+<p>
+  <b>Photo:</b>
+  <%= @statement.photo %>
+</p>
+
+<p>
+  <b>Accepted:</b>
+  <%= @statement.accepted %>
+</p>
+
+<p>
+  <b>Cleared:</b>
+  <%= @statement.cleared %>
+</p>
+
+
+<%= link_to 'Edit', edit_statement_path(@statement) %> |
+<%= link_to 'Back', statements_path %>

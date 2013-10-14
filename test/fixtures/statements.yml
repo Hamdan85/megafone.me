@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  email: MyString
+  depo: MyText
+  fb: MyString
+  photo: MyString
+  accepted: false
+  cleared: false
+
+two:
+  name: MyString
+  email: MyString
+  depo: MyText
+  fb: MyString
+  photo: MyString
+  accepted: false
+  cleared: false
