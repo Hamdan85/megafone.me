@@ -5,7 +5,7 @@ class StatementsController < ApplicationController
   # GET /statements
   # GET /statements.json
   def index
-    @statement = Statement.last
+    @statement = Statement.where("cleared = ?", true).last
 
     @statement.name = @statement.name.split(' ')
     @statement.name = @statement.name.first + ' ' + @statement.name.last
