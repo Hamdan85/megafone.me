@@ -59,6 +59,8 @@ class StatementsController < ApplicationController
   def create
     @statement = Statement.new(params[:statement])
 
+    @statement.cleared = false
+
     respond_to do |format|
       if @statement.save
         format.html { thanks(@statement.name) }
