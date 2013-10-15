@@ -1,0 +1,32 @@
+<h1>Todos os Depoimentos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Fb</th>
+    <th>Photo</th>
+    <th>Accepted</th>
+    <th>Cleared</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @statements.each do |statement| %>
+      <tr>
+        <td><%= statement.name %></td>
+        <td><%= statement.email %></td>
+        <td><%= statement.fb %></td>
+        <td><%= statement.photo %></td>
+        <td><%= statement.accepted %></td>
+        <td><%= statement.cleared %></td>
+        <td><%= link_to 'Show', statement %></td>
+
+        <td><%= link_to 'Clear/Unclear', clear_statement_path(statement) %></td>
+        <td><%= link_to 'Destroy', statement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Sign out', '/user/sign_out', :method => :delete %>

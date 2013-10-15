@@ -8,6 +8,8 @@ MegafoneMe::Application.routes.draw do
   resources :statements, :path => 'depoimento'
   match '/review' => 'statements#listuncleared', :action => :get, :as => :review_path
 
+  match '/showall' => 'statements#showall', :action => :get, :as => :showall
+
   match '/depoimento/:id/cleared' => 'statements#cleared', :as => :clear_statement
 
   match '/depoimento/:id/notcleared' => 'statements#notcleared', :as => :notcleared

@@ -1,40 +1,19 @@
-<p id="notice"><%= notice %></p>
+<section id="depoimento">
+  <div class="wrapper">
+    <div id="portador">
+      Último portador do <span>Megafone:</span>
+    </div>
+    <h1 id="nome"><%= @statement.name %></h1>
+    <div class="clear"></div>
+    <article>
+      <%= @statement.depo %><span class="fecha_aspas"><img src="/assets/aspas_fecha.png" alt="aspas_fecha" width="38" height="30"></span>
+    </article>
 
-<p>
-  <b>Name:</b>
-  <%= @statement.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @statement.email %>
-</p>
-
-<p>
-  <b>Depo:</b>
-  <%= @statement.depo %>
-</p>
-
-<p>
-  <b>Fb:</b>
-  <%= @statement.fb %>
-</p>
-
-<p>
-  <b>Photo:</b>
-  <%= @statement.photo %>
-</p>
-
-<p>
-  <b>Accepted:</b>
-  <%= @statement.accepted %>
-</p>
-
-<p>
-  <b>Cleared:</b>
-  <%= @statement.cleared %>
-</p>
-
-
-<%= link_to 'Edit', edit_statement_path(@statement) %> |
-<%= link_to 'Back', statements_path %>
+    <% if @statement.photo && @statement.photo != '' %>
+        <%= image_tag @statement.photo, :id => 'profile' %>
+    <% else %>
+        <%= image_tag '/assets/generic_w_avatar.png', :id => 'profile' %>
+    <% end %>
+  </div>
+</section>
+<%= link_to 'Voltar', root_path, :class => 'back_button', :style => 'text-align:center;margin-top: 20px;' %>

@@ -1,6 +1,6 @@
 class StatementsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:listuncleared, :cleared]
+  before_filter :authenticate_user!, :only => [:listuncleared, :cleared, :showall]
 
   # GET /statements
   # GET /statements.json
@@ -9,6 +9,15 @@ class StatementsController < ApplicationController
 
     @statement.name = @statement.name.split(' ')
     @statement.name = @statement.name.first + ' ' + @statement.name.last
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @statements }
+    end
+  end
+
+  def showall
+    @statements = Statement.all
 
     respond_to do |format|
       format.html # index.html.erb

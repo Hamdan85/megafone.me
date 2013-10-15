@@ -9,7 +9,7 @@
       <%= @statement.depo %>
     </article>
     <%= if !@statement.photo.nil? %>
-        image_tag @statement.photo, :id => 'profile'
+        <%= image_tag @statement.photo, :id => 'profile' %>
     <% else %>
         <%= image_tag 'generic_w_avatar.png' %> %>
     <% end %>
