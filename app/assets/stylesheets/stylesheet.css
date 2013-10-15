@@ -162,6 +162,8 @@ article {
 #profile {
     float:right;
     margin-top:35px;
+    height: 300px;
+    width: 300px;
 }
 
 .fecha_aspas img{

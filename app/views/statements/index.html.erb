@@ -8,7 +8,11 @@
     <article>
       <%= @statement.depo %><span class="fecha_aspas"><img src="assets/aspas_fecha.png" alt="aspas_fecha" width="38" height="30"></span>
     </article>
-    <img src="http://placehold.it/300/300" id="profile" />
-    <%= @statement.photo %>
+
+    <% if @statement.photo && @statement.photo != '' %>
+        <%= image_tag @statement.photo, :id => 'profile' %>
+    <% else %>
+        <%= image_tag '/assets/generic_w_avatar.png', :id => 'profile' %>
+    <% end %>
   </div>
 </section>

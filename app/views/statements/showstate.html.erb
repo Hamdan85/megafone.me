@@ -8,7 +8,10 @@
     <article>
       <%= @statement.depo %>
     </article>
-    <img src="http://placehold.it/300/300" id="profile" />
-    <%= @statement.photo %>
+    <%= if !@statement.photo.nil? %>
+        image_tag @statement.photo, :id => 'profile'
+    <% else %>
+        <%= image_tag 'generic_w_avatar.png' %> %>
+    <% end %>
   </div>
 </section>
