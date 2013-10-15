@@ -10,9 +10,16 @@ MegafoneMe::Application.routes.draw do
 
   match '/depoimento/:id/cleared' => 'statements#cleared', :as => :clear_statement
 
+  match '/depoimento/:id/notcleared' => 'statements#notcleared', :as => :notcleared
+
+  match '/obrigado' => 'application#thanks', :as => :thanks
+
   devise_scope :user do
 
   end
+
+  # Any routes that aren't defined above here go to the 404
+  match "*a", :to => "application#routing_error"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

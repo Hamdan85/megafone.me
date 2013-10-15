@@ -1,33 +1,14 @@
-<h1>Listing statements</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Depo</th>
-    <th>Fb</th>
-    <th>Photo</th>
-    <th>Accepted</th>
-    <th>Cleared</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @statements.each do |statement| %>
-  <tr>
-    <td><%= statement.name %></td>
-    <td><%= statement.email %></td>
-    <td><%= statement.depo %></td>
-    <td><%= statement.fb %></td>
-    <td><%= statement.photo %></td>
-    <td><%= statement.accepted %></td>
-    <td><%= statement.cleared %></td>
-    <td><%= link_to 'Destroy', statement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Statement', new_statement_path %>
+<section id="depoimento">
+  <div class="wrapper">
+    <div id="portador">
+      Último portador do <span>Megafone:</span>
+    </div>
+    <h1 id="nome"><%= @statement.name %></h1>
+    <div class="clear"></div>
+    <article>
+      <%= @statement.depo %><span class="fecha_aspas"><img src="assets/aspas_fecha.png" alt="aspas_fecha" width="38" height="30"></span>
+    </article>
+    <img src="http://placehold.it/300/300" id="profile" />
+    <%= @statement.photo %>
+  </div>
+</section>

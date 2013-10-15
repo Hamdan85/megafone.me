@@ -5,7 +5,10 @@ class StatementsController < ApplicationController
   # GET /statements
   # GET /statements.json
   def index
-    @statements = Statement.all
+    @statement = Statement.last
+
+    @statement.name = @statement.name.split(' ')
+    @statement.name = @statement.name.first + ' ' + @statement.name.last
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,11 +19,22 @@ class StatementsController < ApplicationController
   # GET /statements/1
   # GET /statements/1.json
   def show
-    @statement = Statement.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @statement }
+    #lembrar do case sensitive
+    @statement = Statement.find_by_name(params[:id].gsub('-', ' '))
+
+    if @statement
+      if @statement.cleared == false
+        respond_to do |format|
+          format.html { redirect_to notcleared_path }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+        format.xml  { head :not_found }
+        format.any  { head :not_found }
+      end
     end
   end
 
@@ -47,8 +61,7 @@ class StatementsController < ApplicationController
 
     respond_to do |format|
       if @statement.save
-        format.html { redirect_to @statement, notice: 'Statement was successfully created.' }
-        format.json { render json: @statement, status: :created, location: @statement }
+        format.html { thanks(@statement.name) }
       else
         format.html { render action: "new" }
         format.json { render json: @statement.errors, status: :unprocessable_entity }
@@ -87,6 +100,20 @@ class StatementsController < ApplicationController
   def showstate
     @statement = Statement.find_by_name(params[:id].gsub('-', ' '))
 
+    if @statement
+      if @statement.cleared == false
+        respond_to do |format|
+          format.html { redirect_to 'statement#notcleared' }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+        format.xml  { head :not_found }
+        format.any  { head :not_found }
+      end
+    end
+
   end
 
   def listuncleared
@@ -120,5 +147,9 @@ class StatementsController < ApplicationController
         format.json { render json: @statement.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def notcleared
+
   end
 end

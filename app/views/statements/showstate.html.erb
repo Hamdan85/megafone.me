@@ -1,16 +1,14 @@
-<p>
-  <b>Name:</b>
-  <%= @statement.name %>
-</p>
-
-<p>
-  <b>Depo:</b>
-  <%= @statement.depo %>
-</p>
-
-
-<p>
-  <b>Photo:</b>
-  <%= @statement.photo %>
-</p>
-
+<section id="depoimento">
+  <div class="wrapper">
+    <div id="portador">
+      Atual portador do <span>Megafone:</span>
+    </div>
+    <h1 id="nome"><%= @statement.name %></h1>
+    <div class="clear"></div>
+    <article>
+      <%= @statement.depo %>
+    </article>
+    <img src="http://placehold.it/300/300" id="profile" />
+    <%= @statement.photo %>
+  </div>
+</section>
